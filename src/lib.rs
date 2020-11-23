@@ -1,9 +1,9 @@
-#[macro_use]
+// #[macro_use]
 extern crate nom;
 extern crate strum;
-#[macro_use]
+// #[macro_use]
 extern crate strum_macros;
 
 mod helpers;
-pub mod parse_timescale;
+mod parser;
 pub mod types;

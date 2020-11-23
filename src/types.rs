@@ -40,9 +40,11 @@ pub enum TimeUnit {
     PS,
 }
 
-pub trait Command {}
-
 #[derive(Debug, Eq, PartialEq)]
 pub struct TimeScale(pub usize, pub TimeUnit);
 
-impl Command for TimeScale {}
+#[derive(Debug, Eq, PartialEq)]
+pub struct Version<'a>(pub &'a str);
+
+#[derive(Debug, Eq, PartialEq)]
+pub struct Date<'a>(pub &'a str);
