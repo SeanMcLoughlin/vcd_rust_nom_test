@@ -9,7 +9,7 @@ use nom::IResult;
 struct CommandParser;
 
 impl Parser<TimeScale> for CommandParser {
-    fn parse(i: &'static str) -> IResult<&'static str, TimeScale> {
+    fn parse(i: &str) -> IResult<&str, TimeScale> {
         let command = tag("$timescale");
         let end = tag("$end");
         let (input, (_, timescale, _)) = tuple((command, CommandDefinitionParser::parse, end))(i)?;
@@ -17,13 +17,13 @@ impl Parser<TimeScale> for CommandParser {
     }
 }
 
-impl<'a> Parser<Version<'a>> for CommandParser {
-    fn parse(i: &'static str) -> IResult<&'static str, Version<'a>> {
+impl Parser<Version> for CommandParser {
+    fn parse(i: &str) -> IResult<&str, Version> {
         let command = tag("$version");
         let version = take_until("$end");
         let end = tag("$end");
         let (input, (_, version, _)) = tuple((command, version, end))(i)?;
-        Ok((input, Version(version)))
+        Ok((input, Version(version.to_string())))
     }
 }
 
@@ -41,7 +41,7 @@ mod tests {
 
         assert_eq!(
             CommandParser::parse("$version won point oh $end"),
-            Ok(("", Version(" won point oh "))) // TODO: How to strip space?
+            Ok(("", Version(" won point oh ".to_string()))) // TODO: How to strip space?
         );
     }
 }

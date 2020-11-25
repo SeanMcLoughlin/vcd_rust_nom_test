@@ -44,7 +44,7 @@ pub enum TimeUnit {
 pub struct TimeScale(pub usize, pub TimeUnit);
 
 #[derive(Debug, Eq, PartialEq)]
-pub struct Version<'a>(pub &'a str);
+pub struct Version(pub String);
 
 #[derive(Debug, Eq, PartialEq)]
-pub struct Date<'a>(pub &'a str);
+pub struct Date(pub String);
