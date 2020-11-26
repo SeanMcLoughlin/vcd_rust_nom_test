@@ -1,5 +1,5 @@
 use crate::helpers::strip;
-use crate::parser::command_parser::CommandParser;
+use crate::parser::CommandParser;
 use crate::parser::Parser;
 use crate::types::{TimeScale, TimeUnit};
 use nom::bytes::complete::{tag, take_while, take_while1};
