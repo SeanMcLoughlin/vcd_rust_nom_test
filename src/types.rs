@@ -40,11 +40,11 @@ pub enum TimeUnit {
     PS,
 }
 
-#[derive(Debug, Eq, PartialEq)]
-pub struct TimeScale(pub usize, pub TimeUnit);
+#[derive(Debug, Eq, PartialEq, Default, Clone)]
+pub struct TimeScale(pub String);
 
-#[derive(Debug, Eq, PartialEq)]
+#[derive(Debug, Eq, PartialEq, Default, Clone)]
 pub struct Version(pub String);
 
-#[derive(Debug, Eq, PartialEq)]
+#[derive(Debug, Eq, PartialEq, Default, Clone)]
 pub struct Date(pub String);

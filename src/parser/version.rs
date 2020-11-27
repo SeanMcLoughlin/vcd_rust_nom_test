@@ -1,17 +1,13 @@
+use crate::parser::helpers::contents_as_string;
 use crate::parser::CommandParser;
 use crate::parser::Parser;
 use crate::types::Version;
-use nom::bytes::complete::{tag, take_until};
-use nom::sequence::tuple;
 use nom::IResult;
 
 impl Parser<Version> for CommandParser {
     fn parse(i: &str) -> IResult<&str, Version> {
-        let command = tag("$version");
-        let version = take_until("$end");
-        let end = tag("$end");
-        let (input, (_, version, _)) = tuple((command, version, end))(i)?;
-        Ok((input, Version(version.trim().to_string())))
+        let (input, version) = contents_as_string(i, "$version")?;
+        Ok((input, Version(version)))
     }
 }
 
