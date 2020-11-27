@@ -20,7 +20,6 @@ mod tests {
     use vcd_rust::{types::*, vcd::VCDBuilder};
 
     #[test]
-    #[ignore]
     fn test_preamble() {
         let act_vcd = vcd_rust::load_from_file(&get_test_file_path("preamble.vcd")[..]).unwrap();
         let exp_vcd = VCDBuilder::default()
